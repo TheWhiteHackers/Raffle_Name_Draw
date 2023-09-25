@@ -12,6 +12,14 @@ function start() {
     makeprizes();
 }
 
+function makeprizes(){
+
+    for (let i = 0; i < prizes.length; i++) {
+        document.getElementsByClassName("options").innerHTML+='<li class="option"><span class="option-text">'+prizes[i]+'</span></li>';
+
+    }
+}
+
 
 
 
