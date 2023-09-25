@@ -1,3 +1,5 @@
+let selectedprize = "";
+
 let names = [];
 
 let prizes = [
@@ -10,21 +12,14 @@ window.onload=start();
 
 function start() {
     makeprizes();
+    document.getElementById("submit").disabled=true;
 }
 
 function makeprizes(){
-
     for (let i = 0; i < prizes.length; i++) {
-        document.getElementsByClassName("options").innerHTML+='<li class="option"><span class="option-text">'+prizes[i]+'</span></li>';
-
+        document.getElementsByClassName("options")[0].innerHTML+='<li class="option" id=this><span class="option-text">'+prizes[i]+'</span></li>';
     }
 }
-
-
-
-
-
-
 
 //---------------------------
 //Dropdown menu stuff
@@ -33,11 +28,27 @@ const optionMenu = document.querySelector(".select-menu"),
        selectBtn = optionMenu.querySelector(".select-btn"),
        options = optionMenu.querySelectorAll(".option"),
        sBtn_text = optionMenu.querySelector(".sBtn-text");
-selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));       
+selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));  
+
 options.forEach(option =>{
     option.addEventListener("click", ()=>{
         let selectedOption = option.querySelector(".option-text").innerText;
         sBtn_text.innerText = selectedOption;
+        selectedprize = selectedOption;
+        console.log(selectedprize);
         optionMenu.classList.remove("active");
+        document.getElementById("submit").disabled=false;
     });
 });
+//-------------------------
+
+function startraffle(){
+    document.getElementById("header").style.display="none";
+    document.getElementById("selectcon").style.display="none";
+
+    document.getElementById("intro").innerHTML="the raffle prize is a";
+    document.getElementById("raffleprizename").innerHTML=selectedprize;
+}
+
+
+
