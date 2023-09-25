@@ -12,6 +12,7 @@ window.onload=start();
 
 function start() {
     makeprizes();
+    document.getElementById("shadow").style.display='none';
     document.getElementById("submit").disabled=true;
 }
 
@@ -45,10 +46,35 @@ options.forEach(option =>{
 function startraffle(){
     document.getElementById("header").style.display="none";
     document.getElementById("selectcon").style.display="none";
+    document.getElementById("shadow").style.display="block"
 
-    document.getElementById("intro").innerHTML="the raffle prize is a";
-    document.getElementById("raffleprizename").innerHTML=selectedprize;
+   thecount();
 }
 
+function thecount() {
+    let counter = 3;
+    let timer = setInterval( function() { 
+      
+      $('#countdown').remove();     
+      
+      let countdown = $('<span id="countdown">'+(counter==0?rafflebegin():counter)+'</span>'); 
+      countdown.appendTo($('#countdowncon'));
+      setTimeout( () => {
+         if (counter >-1) {
+         $('#countdown').css({ 'font-size': '29vw', 'opacity': 0 }); 
+         } else {
+           $('#countdown').css({ 'font-size': '10vw', 'opacity': 70 });
+         }
+      },20);
+      counter--;
+      if (counter == -1) clearInterval(timer);
+    }, 1000);
+    };
 
+function rafflebegin(){
+    document.getElementById("intro").innerHTML="the raffle prize is a";
+    document.getElementById("raffleprizename").innerHTML=selectedprize;
+    document.getElementById("shadow").style.display="none";
+
+}
 
