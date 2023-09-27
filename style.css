@@ -64,12 +64,26 @@ h1{
     transform: translate(-50%, -50%);
     transition: 1s;
     font-size: 0vw;
-    opacity: 70%;
+    opacity: 80%;
     color: rgb(255, 255, 255); 
     z-index: 10001;
     overflow: hidden;
   }
+.mininame{
+    display: inline-flex;
+    border: 0px solid salmon;
+    color: white;
+    background-color: seagreen;
+    padding: 3px 5px;
+    border-radius: 3px;
+    margin: 2px;
 
+    font-size: 11px;
+}
+#namediv{
+    border: 0px solid black;
+    text-align: center;
+}
 
 
 

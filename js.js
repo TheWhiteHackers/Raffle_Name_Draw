@@ -1,6 +1,6 @@
 let selectedprize = "";
 
-let names = [];
+let listofnames = ["Alma Watts", "Ishaan Ochoa", "Zoie Williamson", "Kelsie Melendez", "Cierra Walsh", "Rayna Colon", "Keon Bryant", "Gordon Hogan", "Rachael Munoz", "Aliana Compton", "Chasity Roberson", "Gregory Castillo", "Aldo Blankenship", "Naomi Phillips", "Delaney Heath", "Yadiel Kirk", "Shyanne Cook", "Katie Barker", "Erik Rasmussen", "Audrey Oconnell", "Keon Hogan", "Alvin Herrera", "Brooklynn Larson", "Jennifer Drake", "Izabella Salas", "Dayton Clarke", "Matteo Torres", "Kylan Steele", "Erin Hill", "Keyon Golden", "Thaddeus Haley", "Cedric Hood", "Kenley Ross", "Estrella Colon", "Genesis Salinas", "Christian Robbins", "Makenzie Summers", "Ashtyn Wilkins", "Mckenna Arellano", "Kelsey Arias", "Kenzie Fry", "Ali Little", "Lacey Adams", "Dexter Greene", "Halle Buckley", "Charlotte Woods", "Kayleigh Larsen", "Tianna Farmer", "Riya Chapman", "Bryce Fox", "Talan Gray", "Isabela Wade", "Maren Lynn", "Cherish Bradley", "Lewis Burton", "David Cherry", "Alia Hughes", "Kamari Pearson", "Madelyn Mcpherson", "Esmeralda Riggs", "Ireland Ewing", "Cassius Case", "Ingrid Cherry", "Harper Livingston", "Brody Leach", "Silas Ellison", "Anne Gillespie", "Teagan Garner", "Malaki Juarez", "Silas Turner", "Roland Thornton", "Kadyn Parker", "Leyla Herman", "Kaleb Pierce", "Larry Mcdowell", "Sophia Mendoza", "Alisa Simmons", "Kristin Griffin", "Claire Shepherd", "Julio Ford", "Destiney Haas", "Clark Macias", "Miriam Mcgee", "Kierra Leach", "Justus Pham", "Emely Cameron", "Laura Petersen", "Arthur Benton", "Rodney Carter", "Skyla Strickland", "Jazmin Rowe", "Kasey Moreno", "Junior Boyer", "Journey Mendez", "Dulce Thomas", "Chad Mcgee", "Halle Long", "Isis Robles", "Micheal Perez", "Immanuel Stout", "Kadyn Ibarra", "Aiden Stewart", "Ali Aguilar", "Alyssa Fletcher", "Aliana Robles", "Branden Orozco", "Lane Martin", "Dominic Hodge", "Kaylyn Leach", "Lizbeth Morales", "Addyson Cruz", "Greta Park", "Ruby Haas", "Duncan Rocha", "Derek Garcia", "Kailey Hart", "Nathaniel Jarvis", "Malik Mason", "Faith Shea", "Adelyn Case", "Breanna Castaneda", "Prince Price", "Saniya Ferrell", "Maia Weiss", "Elian Mcgrath", "Dania Rice", "Timothy Wilcox", "Rosemary Davenport", "Lily Leonard", "Marvin Pineda", "Jonathon Pierce", "Kali Blair", "Nataly Waller", "Cordell Moses", "Raven Compton", "Walter Bonilla", "Cara Clarke", "Issac Blackwell", "Solomon Cantu", "Alena Barron", "Jocelynn Reynolds", "Annalise Benitez", "Cailyn Webb", "Kathy Robinson", "Margaret Mcgee", "Frank Bond", "Piper Atkinson", "Delilah Adams", "Gisselle Contreras", "Amiah Contreras", "Annabella Smith", "Esmeralda Mckay", "Samuel Watts", "Alina Sosa", "Simeon Lynch", "Eduardo Gallegos", "Julia Rangel", "Sidney Fuller", "Mckenzie Wilcox", "Kendrick Hooper", "Taniyah Ochoa", "Vance Campbell", "Dayami Kramer", "Elsa Harrell", "Karlee Mccall", "Lana Mathews", "Saige Andersen", "Melany Tapia", "Kaitlynn Rosales", "Perla Benton", "Savannah Sims", "Alessandra Jefferson", "Zachariah Porter", "Adalyn Shaffer", "Harmony Fisher", "Jaqueline Zhang", "Daniela Stone", "Daniela Wiggins", "Alijah Clarke", "Caleb Love", "Keon Crawford", "Aron Nolan", "Brian Barron", "Makenna Black", "Brielle Whitaker", "Celia Lutz", "Terry Mora", "Darius Armstrong", "Devin Kane", "Madden Dennis", "Heidy Fletcher", "Amani Thornton", "Brice Roy", "Cara Burton", "Yaritza Kramer", "Junior Gay", "Caden Osborn", "Shania Barrett", "Edwin Webster", "Maximo Richardson"];
 
 let prizes = [
     "Macbook Pro",
@@ -49,6 +49,7 @@ function startraffle(){
     document.getElementById("shadow").style.display="block"
 
    thecount();
+   //rafflebegin();
 }
 
 function thecount() {
@@ -57,13 +58,18 @@ function thecount() {
       
       $('#countdown').remove();     
       
-      let countdown = $('<span id="countdown">'+(counter==0?rafflebegin():counter)+'</span>'); 
-      countdown.appendTo($('#countdowncon'));
+    if (counter == 0){
+        rafflebegin();
+    } else{
+        let countdown = $('<span id="countdown">'+counter+'</span>'); 
+        countdown.appendTo($('#countdowncon'));
+    }
+      
       setTimeout( () => {
          if (counter >-1) {
          $('#countdown').css({ 'font-size': '29vw', 'opacity': 0 }); 
          } else {
-           $('#countdown').css({ 'font-size': '10vw', 'opacity': 70 });
+           $('#countdown').css({ 'font-size': '10vw', 'opacity': 80 });
          }
       },20);
       counter--;
@@ -75,6 +81,16 @@ function rafflebegin(){
     document.getElementById("intro").innerHTML="the raffle prize is a";
     document.getElementById("raffleprizename").innerHTML=selectedprize;
     document.getElementById("shadow").style.display="none";
+
+    let namepush = "";
+
+    for (let i = 0; i < listofnames.length; i++) {
+        
+        namepush+="<div class=mininame>"+listofnames[i].replace(' ', '&nbsp;')+"</div>"
+        
+    }
+
+    document.getElementById("namediv").innerHTML=namepush;
 
 }
 
