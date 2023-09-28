@@ -46,7 +46,10 @@ options.forEach(option =>{
 function startraffle(){
     document.getElementById("header").style.display="none";
     document.getElementById("selectcon").style.display="none";
-    document.getElementById("shadow").style.display="block"
+    document.getElementById("shadow").style.display="block";
+    document.getElementById("img1").style.display="none";
+    document.getElementById("img2").style.display="none";
+    
 
    thecount();
    //rafflebegin();
