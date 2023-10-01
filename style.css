@@ -73,13 +73,12 @@ h1{
 .mininame{
     display: inline-flex;
     border: 0px solid #ffbe0b;
-    color: #fff;
-    background-color: #ffbe0b;
-    padding: 3px 5px;
+    color: #000;
+    background-color: #ffd670;
+    padding: 0.5em 1em;
     border-radius: 3px;
-    margin: 2px;
-
     
+    margin: 2px;
     font-size: 11px;
 }
 #namediv{
@@ -87,6 +86,7 @@ h1{
     text-align: center;
 }
 
+/* ------------ */
 
 
 /* --------------------- */
