@@ -80,20 +80,63 @@ function thecount() {
     }, 1000);
     };
 
-function rafflebegin(){
+//let wehaveit = [];
+
+var selectedDivs = [];
+
+
+function rafflebegin(id){
     document.getElementById("intro").innerHTML="the raffle prize is a";
     document.getElementById("raffleprizename").innerHTML=selectedprize;
     document.getElementById("shadow").style.display="none";
 
     let namepush = "";
-
     for (let i = 0; i < listofnames.length; i++) {
-        
-        namepush+="<div class=mininame>"+listofnames[i].replace(' ', '&nbsp;')+"</div>"
-        
+        namepush+="<div class=mininame id='div_" + i + "'>"+listofnames[i].replace(' ', '&nbsp;')+"</div>"
     }
-
     document.getElementById("namediv").innerHTML=namepush;
 
+
+    for (let i = 0; i < listofnames.length; i++) {
+        if (listofnames > 191){
+            for (let a = 0; a < 10; a++) {
+                selectRandomDiv();
+            }
+        } else{
+            for (let a = 0; a < 50; a++) {
+                selectRandomDiv();
+            }
+        }
+        
+
+
+    }
 }
 
+
+// Function to select a random div, apply the special class, and remove it after a delay
+function selectRandomDiv() {
+    // Check if there are unselected divs
+    if (listofnames.length > 0) {
+        var randonum = Math.floor(Math.random() * listofnames.length);
+        var selectedDivIndex = randonum;
+
+        // Get the corresponding div element by ID
+        var selectedDiv = document.getElementById('div_' + selectedDivIndex);
+
+        // Add the special class 'flasheffect' to the selected div
+        selectedDiv.classList.add('flasheffect');
+
+        // Remove the selected div from the list and the DOM after a delay
+        setTimeout(function() {
+            listofnames.splice(selectedDivIndex, 1); // Remove from the list
+            selectedDiv.remove(); // Remove from the DOM
+        }, 2000); // Replace '2000' with the desired delay time in milliseconds (e.g., 2000ms = 2 seconds)
+    } else {
+        // All divs have been removed
+        console.log('All divs have been removed.');
+    }
+}
+
+// Call the function to select a random div and remove it
+selectRandomDiv();
