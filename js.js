@@ -98,23 +98,31 @@ function rafflebegin(id){
 
 
     for (let i = 0; i < listofnames.length; i++) {
+        selectRandomDiv();
         if (listofnames > 191){
             for (let a = 0; a < 10; a++) {
                 selectRandomDiv();
+                console.log("----------- num 1 done ------------");
             }
-        } else{
-            for (let a = 0; a < 50; a++) {
+        } else if (listofnames > 150) {
+            for (let a = 0; a < 15; a++) {
                 selectRandomDiv();
-            }
-        }
-        
+                console.log("------------ num 2 done -----------");
 
+            }
+        } else if (listofnames > 100) {
+            for (let a = 0; a < 20; a++) {
+                selectRandomDiv();
+                console.log("------------ num 3 done -----------");
+            }
+    }
+        
 
     }
 }
 
 
-// Function to select a random div, apply the special class, and remove it after a delay
+// Function to select a random div, apply the special class, and remove it from the screen and array after a timeout
 function selectRandomDiv() {
     // Check if there are unselected divs
     if (listofnames.length > 0) {
@@ -127,16 +135,15 @@ function selectRandomDiv() {
         // Add the special class 'flasheffect' to the selected div
         selectedDiv.classList.add('flasheffect');
 
-        // Remove the selected div from the list and the DOM after a delay
+        // Remove the selected div from the screen after a timeout
         setTimeout(function() {
-            listofnames.splice(selectedDivIndex, 1); // Remove from the list
             selectedDiv.remove(); // Remove from the DOM
+            listofnames.splice(selectedDivIndex, 1);
+            console.log(listofnames.length);
+            // Remove from the list
         }, 2000); // Replace '2000' with the desired delay time in milliseconds (e.g., 2000ms = 2 seconds)
     } else {
         // All divs have been removed
         console.log('All divs have been removed.');
     }
 }
-
-// Call the function to select a random div and remove it
-selectRandomDiv();
