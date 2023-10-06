@@ -51,8 +51,8 @@ function startraffle(){
     document.getElementById("img2").style.display="none";
     
 
-   thecount();
-   //rafflebegin();
+   //thecount();
+   rafflebegin();
 }
 
 function thecount() {
@@ -96,29 +96,8 @@ function rafflebegin(id){
     }
     document.getElementById("namediv").innerHTML=namepush;
 
+    selectRandomDiv();
 
-    for (let i = 0; i < listofnames.length; i++) {
-        selectRandomDiv();
-        if (listofnames > 191){
-            for (let a = 0; a < 10; a++) {
-                selectRandomDiv();
-                console.log("----------- num 1 done ------------");
-            }
-        } else if (listofnames > 150) {
-            for (let a = 0; a < 15; a++) {
-                selectRandomDiv();
-                console.log("------------ num 2 done -----------");
-
-            }
-        } else if (listofnames > 100) {
-            for (let a = 0; a < 20; a++) {
-                selectRandomDiv();
-                console.log("------------ num 3 done -----------");
-            }
-    }
-        
-
-    }
 }
 
 
@@ -130,7 +109,7 @@ function selectRandomDiv() {
         var selectedDivIndex = randonum;
 
         // Get the corresponding div element by ID
-        var selectedDiv = document.getElementById('div_' + selectedDivIndex);
+        var selectedDiv = document.querySelector('.mininame:nth-child(' + (selectedDivIndex + 1) + ')');
 
         // Add the special class 'flasheffect' to the selected div
         selectedDiv.classList.add('flasheffect');
@@ -140,6 +119,7 @@ function selectRandomDiv() {
             selectedDiv.remove(); // Remove from the DOM
             listofnames.splice(selectedDivIndex, 1);
             console.log(listofnames.length);
+            selectRandomDiv()
             // Remove from the list
         }, 2000); // Replace '2000' with the desired delay time in milliseconds (e.g., 2000ms = 2 seconds)
     } else {
