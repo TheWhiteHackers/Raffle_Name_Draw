@@ -166,6 +166,6 @@ function selectRandomDiv() {
             // All divs have been removed
             console.log('All divs have been removed.');
         }
-    }, 2000); // Replace
+    }, 100); // Replace
     
 }
