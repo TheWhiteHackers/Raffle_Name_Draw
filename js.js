@@ -125,7 +125,7 @@ function selectRandomDiv(listofnames) {
         }
         console.log("Selected and removed 5 items:", selectedItems);
       }
-    }, 1000);
+    }, 500);
   }
   
 
