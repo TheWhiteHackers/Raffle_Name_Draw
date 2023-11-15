@@ -1,5 +1,9 @@
 /* To Do
 
+    - remove flash from last one
+    - celeb screen
+        - with confetti
+    - font size
 
 */
 let selectedprize = "";
