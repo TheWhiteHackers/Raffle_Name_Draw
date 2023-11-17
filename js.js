@@ -249,7 +249,7 @@ let listofnames = [
 
 let prizes = ["Macbook Pro", "Samsung Galaxy 24", "MarsCat"];
 
-window.onloads = start();
+window.onload = start();
 
 function start() {
   makeprizes();
