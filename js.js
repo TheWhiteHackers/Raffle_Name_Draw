@@ -255,6 +255,7 @@ function start() {
   makeprizes();
   document.getElementById("shadow").style.display = "none";
   document.getElementById("submit").disabled = true;
+  document.getElementById("namediv").style.display = "none";
 }
 
 function makeprizes() {
@@ -290,6 +291,7 @@ options.forEach((option) => {
 //-------------------------
 
 function startraffle() {
+  document.getElementById("namediv").style.display = "block";
   document.getElementById("header").style.display = "none";
   document.getElementById("selectcon").style.display = "none";
   document.getElementById("shadow").style.display = "block";
@@ -336,11 +338,11 @@ function rafflebegin(id) {
   let namepush = "";
   for (let i = 0; i < listofnames.length; i++) {
     namepush +=
-      "<div id='name" +
+      "<span id='name" +
       i +
-      "' class=mininame>" +
+      "' class='mininame fontr'>" +
       listofnames[i].replace(" ", "&nbsp;") +
-      "</div>";
+      "</span>";
   }
   document.getElementById("namediv").innerHTML = namepush;
 
@@ -361,7 +363,11 @@ function selectRandomDiv(arraylist) {
       console.log("Last remaining item:", nameids[0]);
     } else if (remainingCount > 1) {
       //const selectedItems = [];
-      if (remainingCount < 9) {
+      if (remainingCount < 9) {  
+        const el = document.querySelectorAll(".fontr");
+        el.forEach((e)=>{
+          e.style.fontSize="17px";
+        })
         removeamount = 1;
         flashtime = 2000;
         removespeed = 2000;
