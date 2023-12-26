@@ -4,6 +4,7 @@
     - celeb screen
         - with confetti
     - font size
+    - flashing has randomness to it
 
 */
 let selectedprize = "";
@@ -359,18 +360,26 @@ function selectRandomDiv(arraylist) {
     const remainingCount = nameids.length;
 
     if (remainingCount === 1) {
+      // console.log(nameids[0]);
+      // document.getElementById("name" + nameids[0]).classList.remove("flasheffect");
+
       clearInterval(interval);
       console.log("Last remaining item:", nameids[0]);
     } else if (remainingCount > 1) {
       //const selectedItems = [];
-      if (remainingCount < 9) {  
+      if (remainingCount < 9) {
         const el = document.querySelectorAll(".fontr");
-        el.forEach((e)=>{
-          e.style.fontSize="17px";
-        })
+        el.forEach((e) => {
+          e.style.fontSize = "34px";
+        });
         removeamount = 1;
         flashtime = 2000;
         removespeed = 2000;
+      } else if (remainingCount < 30) {
+        const el = document.querySelectorAll(".fontr");
+        el.forEach((e) => {
+          e.style.fontSize = "21px";
+        });
       }
 
       for (let i = 0; i < removeamount; i++) {
@@ -390,8 +399,7 @@ function selectRandomDiv(arraylist) {
         const randomIndex = Math.floor(Math.random() * nameids.length);
         let divid = nameids.splice(randomIndex, 1)[0];
 
-       
-        if (remainingCount >= 6){
+        if (remainingCount >= 6) {
           document.getElementById("name" + divid).classList.add("flasheffect");
         }
 
